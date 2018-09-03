@@ -1,19 +1,38 @@
 {
-  "name": "semantic-release-monorepo-demo",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "lerna:publish": "lerna publish",
-    "semantic-release": "lerna exec --concurrency 1 -- semantic-release -e semantic-release-monorepo --tag-format='${LERNA_PACKAGE_NAME}-v\\${version}'",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "lerna": "^3.2.1",
-    "semantic-release": "^15.9.12",
-    "semantic-release-monorepo": "^6.0.3"
-  }
+    "name": "semantic-release-monorepo-demo",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "release": {
+        "generateNotes": {
+            "preset": "angular",
+            "parserOpts": {
+                "noteKeywords": [
+                    "BREAKING CHANGE",
+                    "BREAKING CHANGES",
+                    "BREAKING"
+                ]
+            },
+            "writerOpts": {
+                "commitsSort": [
+                    "subject",
+                    "scope"
+                ]
+            }
+        }
+    },
+    "scripts": {
+        "lerna:publish": "lerna publish",
+        "semantic-release": "lerna exec --concurrency 1 -- semantic-release -e semantic-release-monorepo --tag-format='${LERNA_PACKAGE_NAME}-v\\${version}'",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@semantic-release/release-notes-generator": "^7.0.1",
+        "lerna": "^3.2.1",
+        "semantic-release": "^15.9.12",
+        "semantic-release-monorepo": "^6.0.3"
+    }
 }
